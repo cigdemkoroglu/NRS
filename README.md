@@ -16,7 +16,7 @@ unaligned_contig.R:
 - Input is generated using show-coords tool of MUMmer: 
     show-coords -T -l path/delta.filter > path/delta.filter.tab
 - and then running the following R scripts: 
-    path/unaligned_contig.R, path/delta.filter.tab 
+    path/unaligned_contig.R 
 - Output files:
     output_alignment.csv and output_alignment_summary.csv  
 
