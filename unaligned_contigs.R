@@ -1,4 +1,4 @@
-f <- function(file_location) {
+find_unaligned_parts <- function(file_location) {
   
   library(data.table)
   library(magrittr)
@@ -56,7 +56,7 @@ f <- function(file_location) {
   output_summary <- output[, .(total_unaligned_coords=sum(End-Start)), by = c('Tag')]
   
   # write outputs to file
-  fwrite(output_summary, './output_alignment_summary.csv')
-  fwrite(output, './output_alignment.csv')
+  fwrite(output_summary, './output_unalignment_summary.csv')
+  fwrite(output, './output_unalignment.csv')
   
 }
