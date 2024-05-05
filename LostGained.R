@@ -1,6 +1,8 @@
 find_gained_lost <- function(database1, database_insertion_modified, insertions_file, chr_number){
   
   library(data.table)
+
+  # deneme
   
   # sample call
   # find_gained_lost ('chr10_hg38_2023_multianno.txt', 'chr10_hg38_NRS_multianno.txt', 'insertions_v5.xlsx', '10')
