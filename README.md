@@ -43,7 +43,7 @@ Three functions to lift-over databases used by ANNOVAR (https://annovar.openbioi
 &emsp;lift_annovar(hg38_avsnp150, insertions_file)
 
 LostGained.R: 
-- Compared the the reference and reference-NRS annotated variant data.
+- Compared the reference and the reference-NRS annotated variant data.
 - Input files: \
 &emsp; Insertion file, chromosome based annotation files for reference and reference-NRS 
 - find_gained_lost_snps(hg38_multianno_file, hg38NRS_multianno_file, insertions_file, chromosome_number)
