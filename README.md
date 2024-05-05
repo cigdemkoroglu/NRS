@@ -3,11 +3,11 @@ and compares the variant calling outputs of two pipelines; one using the referen
 Detailed description of the project and other open-source tools utilized in the project can be found at: 
 https://www.biorxiv.org/content/10.1101/2023.10.23.563520v1
 
-Scripts in this project in running order:
-unaligned_contigs.R
-lift_database.R
-annotation lifts: lift_RNA.R,lift_Refseq.R, lift_annovar.R
-LostGained.R
+Scripts in this project in running order: \
+unaligned_contigs.R \
+lift_database.R \
+annotation lifts: lift_RNA.R,lift_Refseq.R, lift_annovar.R \
+LostGained.R \
 
 unaligned_contig.R:
 uses MUMmer alignment output to extract aligned sequences. 
