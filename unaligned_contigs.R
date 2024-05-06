@@ -2,9 +2,9 @@ find_unaligned_parts <- function(file_location) {
   
   library(data.table)
   library(magrittr)
-  
+
+  # read input file and set column names
   alignment <- fread(file_location)
-  
   names(alignment) <- c('st_ref', 'end_ref', 'st_query', 'end_query', 'length_aln_ref', 'length_aln_query', 'percent_identity', 'length_ref',  'length_query', 'tag_ref', 'tag_query')
   
   # delete unused columns
