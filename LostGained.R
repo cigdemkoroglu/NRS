@@ -30,30 +30,35 @@ find_gained_lost <- function(annotated_variant, annotated_variant_NRS, insertion
     annotated_variant_dt[Start>=start, ':='(Start = Start + insertion_size, End = End + insertion_size)]
   }
 
-  # 
-  
+  # record snpids of rows with the same snp ids  
   common_rs <- intersect(annotated_variant_dt$avsnp150, annotated_variant_NRS_dt$avsnp150)
   common_rs <- common_rs[common_rs!='.']
-  common_starts <- intersect(annotated_variant_dt[avsnp150=='.', Start], annotated_variant_NRS_dt[avsnp150=='.', Start])
   
+  # rows with same start and no snp id
+  common_starts <- intersect(annotated_variant_dt[avsnp150=='.', Start], annotated_variant_NRS_dt[avsnp150=='.', Start])
+
+  # find common rows in the two files 
   common_dt <- merge.data.table(annotated_variant_dt, 
                                 annotated_variant_NRS_dt, 
                                 by=c('Chr', 'Start', 'End', 'Ref', 'Alt', 'avsnp150')
                                )
-  
+
+  # Find lost rows from annotated_variant
   lost_dt <- annotated_variant_dt[!(avsnp150 %in% common_rs | (avsnp150 == '.' & Start %in% common_starts)),]
   lost_dt[,Start := original_start]
   lost_dt[,End := original_end]
   lost_dt[,original_start := NULL]
   lost_dt[,original_end := NULL]
-  
+
+  # Find gained rows in annotated_variant_NRS
   gained_dt <- annotated_variant_NRS_dt[!(avsnp150 %in% common_rs | (avsnp150 == '.' & Start %in% common_starts)),]
   
   
   print(paste0('For ','chr',chr_number,': ','first database - lost - common = ', nrow(annotated_variant_dt) - nrow(lost_dt) - nrow(common_dt)))
   
   print(paste0('For ','chr',chr_number,': ','second database - gained - common = ', nrow(annotated_variant_NRS_dt) - nrow(gained_dt) - nrow(common_dt)))
-  
+
+  # write the output files
   fwrite(lost_dt, 'lost.txt', sep = '\t')
   fwrite(gained_dt, 'gained.txt', sep = '\t')
 }
