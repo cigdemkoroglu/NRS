@@ -14,7 +14,6 @@ Files used:
 - insertions file: contains locations of novel segments inserted in the reference
 - dbsnp file: dbsnp file from GATK bundle
 - ANNOVAR database files: hg38_refGeneMrna.fa, hg38_refGene.txt, hg38_avsnp150.txt
-- RefSeq_changes file: describes the genes with insertions. The file used in project is available in the folder.
 
 unaligned_contig.R:
 - Uses MUMmer alignment output to extract unaligned sequences. 
@@ -38,7 +37,7 @@ Three functions to lift-over databases used by ANNOVAR (https://annovar.openbioi
 - lift_RNA.R: \
 &emsp;lift_RNA(hg38_refGeneMrna, insertions_file)
 - lift_RefSeq.R: \
-&emsp;lift_RefSeq(hg38_refGene, insertions_file, RefSeq_changes)
+&emsp;lift_RefSeq(hg38_refGene, insertions_file)
 - lift_annovar.R: \
 &emsp;lift_annovar(hg38_avsnp150, insertions_file)
 
